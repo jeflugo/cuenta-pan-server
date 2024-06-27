@@ -2,6 +2,12 @@ import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
 import morgan from 'morgan'
+import breadRouter from './routes/bread'
+import db from './config/mongo'
+
+db().then(() => {
+	console.log('Connected to db')
+})
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -14,10 +20,10 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-app.get('/', (req, res) => {
-	res.send('Hello World!')
-})
+app.use('/breads', breadRouter)
+
+app.get('/', (req, res) => res.send('Hello World!'))
 
 app.listen(port, () => {
-	console.log(`Example app listening at http://localhost:${port}`)
+	console.log(`Running on port: ${port}`)
 })
