@@ -1,10 +1,33 @@
+@id = 6685f78fc6bfc112bb0ba72d
+
+
 ###
 GET http://localhost:3030/breads HTTP/1.1
+
+###
+GET http://localhost:3030/breads/{{id}} HTTP/1.1
 
 ###
 POST http://localhost:3030/breads HTTP/1.1
 Content-Type: application/json
 
 {
-  "name": "canilla"
+  "name": "asd",
+  "weight": 2200,
+  "left": 0,
+  "make": 0
 }
+
+###
+PUT http://localhost:3030/breads/{{id}} HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "frances",
+  "weight": 2200,
+  "left": 10,
+  "make": 0
+}
+
+###
+DELETE http://localhost:3030/breads/{{id}} HTTP/1.1

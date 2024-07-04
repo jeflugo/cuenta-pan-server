@@ -1,4 +1,4 @@
-type TBread = {
+export type TBread = {
 	name: string
 	weight: number
 	left: number

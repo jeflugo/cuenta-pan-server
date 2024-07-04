@@ -5,11 +5,11 @@ import {
 	getBreads,
 	postBread,
 	updateBread,
-} from '../controllers/bread'
+} from '../controllers/breads'
 
 const router = Router()
 
 router.route('/').get(getBreads).post(postBread)
 router.route('/:id').get(getBread).put(updateBread).delete(deleteBread)
 
-export default router
+export { router }

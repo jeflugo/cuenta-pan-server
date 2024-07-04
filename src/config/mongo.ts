@@ -1,9 +1,9 @@
-import 'dotenv/config'
 import { connect } from 'mongoose'
 
 async function connectDB() {
 	const DB_URI = process.env.DB_URI as string
-	await connect(DB_URI)
+	const DB_NAME = 'bakery'
+	await connect(DB_URI, { dbName: DB_NAME })
 }
 
 export default connectDB
