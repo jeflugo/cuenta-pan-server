@@ -1,33 +1,84 @@
-@id = 6685f78fc6bfc112bb0ba72d
+# BREADS
 
 
-###
-GET http://localhost:3030/breads HTTP/1.1
-
-###
-GET http://localhost:3030/breads/{{id}} HTTP/1.1
+@breadId = 66875471f8882e8862c6d233
+@breadsUrl = saltyBreads
 
 ###
-POST http://localhost:3030/breads HTTP/1.1
+GET http://localhost:3030/{{breadsUrl}} HTTP/1.1
+
+###
+GET http://localhost:3030/{{breadsUrl}}/{{breadId}} HTTP/1.1
+
+###
+POST http://localhost:3030/{{breadsUrl}} HTTP/1.1
 Content-Type: application/json
 
 {
-  "name": "asd",
-  "weight": 2200,
+  "name": "Cuchilla",
+  "weight": 135,
   "left": 0,
   "make": 0
 }
 
 ###
-PUT http://localhost:3030/breads/{{id}} HTTP/1.1
+PUT http://localhost:3030/{{breadsUrl}}/{{breadId}} HTTP/1.1
 Content-Type: application/json
 
 {
-  "name": "frances",
-  "weight": 2200,
-  "left": 10,
+  "name": "Bombon changed",
+  "weight": 80,
+  "left": 0,
   "make": 0
 }
 
 ###
-DELETE http://localhost:3030/breads/{{id}} HTTP/1.1
+DELETE http://localhost:3030/{{breadsUrl}}/{{breadId}} HTTP/1.1
+
+
+# SAVED BREADS
+
+
+@savedBreadsId = 66875af841b533f95cf45f1b
+@savedBreadsUrl = savedSaltyBreads
+
+###
+GET http://localhost:3030/{{savedBreadsUrl}} HTTP/1.1
+
+###
+GET http://localhost:3030/{{savedBreadsUrl}}/{{savedBreadsId}} HTTP/1.1
+
+###
+POST http://localhost:3030/{{savedBreadsUrl}} HTTP/1.1
+Content-Type: application/json
+
+{
+  "date": "asdasd",
+  "breads": [
+    {
+      "name": "Maiz",
+      "weight": 80,
+      "left": 0,
+      "make": 0
+    }
+  ]
+}
+
+###
+PUT http://localhost:3030/{{savedBreadsUrl}}/{{savedBreadsId}} HTTP/1.1
+Content-Type: application/json
+
+{
+  "date": "zxcv",
+  "breads": [
+    {
+      "name": "Bonbom",
+      "weight": 80,
+      "left": 0,
+      "make": 0
+    }
+  ]
+}
+
+###
+DELETE http://localhost:3030/{{savedBreadsUrl}}/{{savedBreadsId}} HTTP/1.1

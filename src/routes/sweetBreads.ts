@@ -5,7 +5,7 @@ import {
 	getBreads,
 	postBread,
 	updateBread,
-} from '../controllers/breads'
+} from '../controllers/sweetBreads'
 
 const router = Router()
 

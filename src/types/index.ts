@@ -4,3 +4,8 @@ export type TBread = {
 	left: number
 	make: number
 }
+
+export type TSavedBreads = {
+	date: string
+	breads: TBread[]
+}

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 import { TBread } from '../types'
 
-const breadSchema = new mongoose.Schema<TBread>(
+const sweetBreadSchema = new mongoose.Schema<TBread>(
 	{
 		name: {
 			type: String,
@@ -26,6 +26,6 @@ const breadSchema = new mongoose.Schema<TBread>(
 	}
 )
 
-const Bread = mongoose.model('Bread', breadSchema)
+const SweetBread = mongoose.model('sweet-breads', sweetBreadSchema)
 
-export default Bread
+export default SweetBread
