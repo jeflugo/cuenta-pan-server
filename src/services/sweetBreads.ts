@@ -22,7 +22,7 @@ const resetBreads = async () => {
 	const newBreads = await SweetBread.find()
 	if (newBreads.length === 0) return null
 
-	const newBreadsModified = newBreads.map(async bread => {
+	const newBreadsModified = await newBreads.map(async bread => {
 		const updates = { left: 0, make: 0 }
 		const updatedBread = await SweetBread.findByIdAndUpdate(bread.id, updates, {
 			new: true,
