@@ -22,20 +22,26 @@ const resetBreads = async () => {
 	const newBreads = await SweetBread.find()
 	if (newBreads.length === 0) return null
 
-	const newBreadsModified = await newBreads.map(async bread => {
-		const updates = { left: 0, make: 0 }
-		const updatedBread = await SweetBread.findByIdAndUpdate(bread.id, updates, {
-			new: true,
+	const newBreadsModified = await Promise.all(
+		newBreads.map(async bread => {
+			const updates = { left: 0, make: 0 }
+			const updatedBread = await SweetBread.findByIdAndUpdate(
+				bread.id,
+				updates,
+				{
+					new: true,
+				}
+			)
+			const { id, name, weight, left, make } = updatedBread!
+			return {
+				id,
+				name,
+				weight,
+				left,
+				make,
+			}
 		})
-		const { id, name, weight, left, make } = updatedBread!
-		return {
-			id,
-			name,
-			weight,
-			left,
-			make,
-		}
-	})
+	)
 	return newBreadsModified
 }
 
