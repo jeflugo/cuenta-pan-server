@@ -1,16 +1,15 @@
-import SaltyBreads from '../models/saltyBreads'
+import SaltyBread from '../models/saltyBreads'
 import { TBread } from '../types'
 
-const getBreads = async () => await SaltyBreads.find()
+const getBreads = async () => await SaltyBread.find()
 
-const insertBread = async (bread: TBread) => await SaltyBreads.create(bread)
+const insertBread = async (bread: TBread) => await SaltyBread.create(bread)
 
-const getBread = async (id: string) => await SaltyBreads.findById(id)
+const getBread = async (id: string) => await SaltyBread.findById(id)
 
 const updateBread = async (id: string, updates: Partial<TBread>) =>
-	await SaltyBreads.findByIdAndUpdate(id, updates, { new: true })
+	await SaltyBread.findByIdAndUpdate(id, updates, { new: true })
 
-const deleteBread = async (id: string) =>
-	await SaltyBreads.findByIdAndDelete(id)
+const deleteBread = async (id: string) => await SaltyBread.findByIdAndDelete(id)
 
 export default { insertBread, getBreads, getBread, updateBread, deleteBread }

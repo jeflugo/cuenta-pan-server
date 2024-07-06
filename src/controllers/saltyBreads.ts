@@ -3,7 +3,7 @@ import service from '../services/saltyBreads'
 import { tryCatchWrapper } from '../utils/tryCatchWrapper'
 
 const getBreads = tryCatchWrapper(
-	(req: Request, res: Response) => service.getBreads,
+	(req: Request, res: Response) => service.getBreads(),
 	'GET_BREADS_ERROR'
 )
 
@@ -26,4 +26,5 @@ const deleteBread = tryCatchWrapper(
 	(req: Request, res: Response) => service.deleteBread(req.params.id),
 	'DELETE_BREAD_ERROR'
 )
+
 export { getBreads, postBread, deleteBread, getBread, updateBread }
