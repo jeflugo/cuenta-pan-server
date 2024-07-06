@@ -1,7 +1,20 @@
 import SavedSaltyBreads from '../models/savedSaltyBreads'
 import { TSavedBreads } from '../types'
 
-const getBreads = async () => await SavedSaltyBreads.find()
+const getBreads = async () => {
+	const newSavedBreadsArr = await SavedSaltyBreads.find()
+	if (newSavedBreadsArr.length === 0) return null
+	const newSavedBreadsArrModified = newSavedBreadsArr.map(
+		({ id, date, breads }) => {
+			return {
+				id,
+				date,
+				breads,
+			}
+		}
+	)
+	return newSavedBreadsArrModified
+}
 
 const insertBread = async (bread: TSavedBreads) =>
 	await SavedSaltyBreads.create(bread)

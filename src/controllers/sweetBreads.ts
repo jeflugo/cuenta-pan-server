@@ -7,6 +7,11 @@ const getBreads = tryCatchWrapper(
 	'GET_BREADS_ERROR'
 )
 
+const resetBreads = tryCatchWrapper(
+	(req: Request, res: Response) => service.resetBreads(),
+	'GET_BREADS_ERROR'
+)
+
 const getBread = tryCatchWrapper(
 	(req: Request, res: Response) => service.getBread(req.params.id),
 	'GET_BREAD_ERROR'
@@ -27,4 +32,4 @@ const deleteBread = tryCatchWrapper(
 	'DELETE_BREAD_ERROR'
 )
 
-export { getBreads, postBread, deleteBread, getBread, updateBread }
+export { getBreads, resetBreads, postBread, deleteBread, getBread, updateBread }

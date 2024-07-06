@@ -3,6 +3,7 @@ import { TBread } from '../types'
 
 const getBreads = async () => {
 	const newBreads = await SaltyBread.find()
+	if (newBreads.length === 0) return null
 	const newBreadsModified = newBreads.map(
 		({ id, name, weight, left, make }) => {
 			return {
@@ -11,6 +12,22 @@ const getBreads = async () => {
 				weight,
 				left,
 				make,
+			}
+		}
+	)
+	return newBreadsModified
+}
+
+const resetBreads = async () => {
+	const newBreads = await SaltyBread.find()
+	const newBreadsModified = newBreads.map(
+		({ id, name, weight, left, make }) => {
+			return {
+				id,
+				name,
+				weight,
+				left: 0,
+				make: 0,
 			}
 		}
 	)
@@ -50,4 +67,11 @@ const deleteBread = async (id: string) => {
 	return { id: deletedBread?.id }
 }
 
-export default { insertBread, getBreads, getBread, updateBread, deleteBread }
+export default {
+	insertBread,
+	getBreads,
+	resetBreads,
+	getBread,
+	updateBread,
+	deleteBread,
+}

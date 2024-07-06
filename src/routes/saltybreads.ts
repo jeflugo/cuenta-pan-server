@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import {
 	deleteBread,
+	resetBreads,
 	getBread,
 	getBreads,
 	postBread,
@@ -9,7 +10,8 @@ import {
 
 const router = Router()
 
-router.route('/').get(getBreads).post(postBread)
+router.route('/').get(getBreads).post(postBread).put(resetBreads)
 router.route('/:id').get(getBread).put(updateBread).delete(deleteBread)
+// router.route('/reset').get(resetBreads)
 
 export { router }

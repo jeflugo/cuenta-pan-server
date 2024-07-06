@@ -13,7 +13,11 @@ const port = process.env.PORT || 3000
 
 app.use(morgan('tiny'))
 
-app.use(cors())
+app.use(
+	cors({
+		origin: process.env.CLIENT_URL,
+	})
+)
 
 // Body parser
 app.use(express.json())
