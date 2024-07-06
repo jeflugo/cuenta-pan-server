@@ -20,17 +20,22 @@ const getBreads = async () => {
 
 const resetBreads = async () => {
 	const newBreads = await SaltyBread.find()
-	const newBreadsModified = newBreads.map(
-		({ id, name, weight, left, make }) => {
-			return {
-				id,
-				name,
-				weight,
-				left: 0,
-				make: 0,
-			}
+	if (newBreads.length === 0) return null
+
+	const newBreadsModified = newBreads.map(async bread => {
+		const updates = { left: 0, make: 0 }
+		const updatedBread = await SaltyBread.findByIdAndUpdate(bread.id, updates, {
+			new: true,
+		})
+		const { id, name, weight, left, make } = updatedBread!
+		return {
+			id,
+			name,
+			weight,
+			left,
+			make,
 		}
-	)
+	})
 	return newBreadsModified
 }
 
