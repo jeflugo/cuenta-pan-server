@@ -9,3 +9,7 @@ export type TSavedBreads = {
 	date: string
 	breads: TBread[]
 }
+
+export type TReset = {
+	value: string
+}

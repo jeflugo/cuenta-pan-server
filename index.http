@@ -82,3 +82,13 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:3030/{{savedBreadsUrl}}/{{savedBreadsId}} HTTP/1.1
+
+
+# RESETS
+
+
+# @savedBreadsId = 66875af841b533f95cf45f1b
+@resetsUrl = sweetResets
+
+###
+GET http://localhost:3030/{{resetsUrl}} HTTP/1.1
