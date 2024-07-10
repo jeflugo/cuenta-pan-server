@@ -5,13 +5,14 @@ const getBreads = async () => {
 	const newBreads = await SweetBread.find()
 	if (newBreads.length === 0) return null
 	const newBreadsModified = newBreads.map(
-		({ id, name, weight, left, make }) => {
+		({ id, name, weight, left, make, position }) => {
 			return {
 				id,
 				name,
 				weight,
 				left,
 				make,
+				position,
 			}
 		}
 	)
@@ -32,13 +33,14 @@ const resetBreads = async () => {
 					new: true,
 				}
 			)
-			const { id, name, weight, left, make } = updatedBread!
+			const { id, name, weight, left, make, position } = updatedBread!
 			return {
 				id,
 				name,
 				weight,
 				left,
 				make,
+				position,
 			}
 		})
 	)
@@ -46,13 +48,15 @@ const resetBreads = async () => {
 }
 
 const insertBread = async (bread: TBread) => {
-	const { _id, name, weight, left, make } = await SweetBread.create(bread)
+	const newBread = await SweetBread.create(bread)
+	const { id, name, weight, left, make, position } = newBread
 	return {
-		id: _id,
+		id,
 		name,
 		weight,
 		left,
 		make,
+		position,
 	}
 }
 
@@ -62,19 +66,20 @@ const updateBread = async (id: string, updates: Partial<TBread>) => {
 	const updatedBread = await SweetBread.findByIdAndUpdate(id, updates, {
 		new: true,
 	})
-	const { _id, name, weight, left, make } = updatedBread!
+	const { _id, name, weight, left, make, position } = updatedBread!
 	return {
 		id: _id,
 		name,
 		weight,
 		left,
 		make,
+		position,
 	}
 }
 
 const deleteBread = async (id: string) => {
 	const deletedBread = await SweetBread.findByIdAndDelete(id)
-	return { id: deletedBread?._id }
+	return { id: deletedBread?.id }
 }
 
 export default {

@@ -19,6 +19,10 @@ const sweetBreadSchema = new mongoose.Schema<TBread>(
 			type: Number,
 			required: true,
 		},
+		position: {
+			type: Number,
+			required: true,
+		},
 	},
 	{
 		timestamps: true,

@@ -5,13 +5,14 @@ const getBreads = async () => {
 	const newBreads = await SaltyBread.find()
 	if (newBreads.length === 0) return null
 	const newBreadsModified = newBreads.map(
-		({ id, name, weight, left, make }) => {
+		({ id, name, weight, left, make, position }) => {
 			return {
 				id,
 				name,
 				weight,
 				left,
 				make,
+				position,
 			}
 		}
 	)
@@ -32,13 +33,14 @@ const resetBreads = async () => {
 					new: true,
 				}
 			)
-			const { id, name, weight, left, make } = updatedBread!
+			const { id, name, weight, left, make, position } = updatedBread!
 			return {
 				id,
 				name,
 				weight,
 				left,
 				make,
+				position,
 			}
 		})
 	)
@@ -47,13 +49,14 @@ const resetBreads = async () => {
 
 const insertBread = async (bread: TBread) => {
 	const newBread = await SaltyBread.create(bread)
-	const { name, weight, left, make, id } = newBread
+	const { id, name, weight, left, make, position } = newBread
 	return {
 		id,
 		name,
 		weight,
 		left,
 		make,
+		position,
 	}
 }
 
@@ -63,13 +66,14 @@ const updateBread = async (id: string, updates: Partial<TBread>) => {
 	const updatedBread = await SaltyBread.findByIdAndUpdate(id, updates, {
 		new: true,
 	})
-	const { _id, name, weight, left, make } = updatedBread!
+	const { _id, name, weight, left, make, position } = updatedBread!
 	return {
 		id: _id,
 		name,
 		weight,
 		left,
 		make,
+		position,
 	}
 }
 

@@ -3,6 +3,7 @@ export type TBread = {
 	weight: number
 	left: number
 	make: number
+	position: number
 }
 
 export type TSavedBreads = {
@@ -12,4 +13,9 @@ export type TSavedBreads = {
 
 export type TReset = {
 	value: string
+}
+
+export type TBreadOrder = {
+	id: string
+	position: number
 }
