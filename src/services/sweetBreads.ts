@@ -1,5 +1,5 @@
 import SweetBread from '../models/sweetBreads'
-import { TBread } from '../types'
+import { TBread, TBreadOrder } from '../types'
 
 const getBreads = async () => {
 	const newBreads = await SweetBread.find()
@@ -47,6 +47,15 @@ const resetBreads = async () => {
 	return newBreadsModified
 }
 
+const reorderBreads = async (newOrder: TBreadOrder[]) => {
+	await Promise.all(
+		newOrder.map(async ({ id, position }) => {
+			await SweetBread.findByIdAndUpdate(id, { $set: { position } })
+		})
+	)
+	return 'Order Updated'
+}
+
 const insertBread = async (bread: TBread) => {
 	const newBread = await SweetBread.create(bread)
 	const { id, name, weight, left, make, position } = newBread
@@ -86,6 +95,7 @@ export default {
 	insertBread,
 	getBreads,
 	resetBreads,
+	reorderBreads,
 	getBread,
 	updateBread,
 	deleteBread,

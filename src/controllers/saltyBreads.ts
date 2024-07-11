@@ -9,7 +9,12 @@ const getBreads = tryCatchWrapper(
 
 const resetBreads = tryCatchWrapper(
 	(req: Request, res: Response) => service.resetBreads(),
-	'GET_BREADS_ERROR'
+	'RESET_BREADS_ERROR'
+)
+
+const reorderBreads = tryCatchWrapper(
+	(req: Request, res: Response) => service.reorderBreads(req.body),
+	'REORDER_BREADS_ERROR'
 )
 
 const getBread = tryCatchWrapper(
@@ -32,4 +37,12 @@ const deleteBread = tryCatchWrapper(
 	'DELETE_BREAD_ERROR'
 )
 
-export { getBreads, resetBreads, postBread, deleteBread, getBread, updateBread }
+export {
+	getBreads,
+	resetBreads,
+	reorderBreads,
+	postBread,
+	deleteBread,
+	getBread,
+	updateBread,
+}
